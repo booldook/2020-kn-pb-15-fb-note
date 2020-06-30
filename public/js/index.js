@@ -32,9 +32,17 @@ function onSave() {
 	}
 }
 
+function onDel() {
+	var id = $(this).parent().attr("id");
+	if(confirm("정말로 삭제하시겠습니까?")) {
+		db.ref("root/notes/" + user.uid + "/" + id).remove();
+	}
+}
+
 function onAdded(data) {
 	var html = '';
-	html += '<div class="card">';
+	html += '<div class="card position-relative" id="'+data.key+'">';
+	html += '<i class="bt-del fa fa-trash-alt position-absolute"></i>';
 	html += '<div class="card-body d-flex align-items-center">';
 	html += '<h2 class="rounded-circle w70 h70 bg-primary text-light d-flex justify-content-center align-items-center font-weight-bold">'+data.val().icon+'</h2>';
 	html += '<div class="w-auto ml-3">';
@@ -43,11 +51,11 @@ function onAdded(data) {
 	html += '</div>';
 	html += '</div>';
 	html += '</div>';
-	$(".list-wrapper").prepend(html);
+	$(html).prependTo(".list-wrapper").find(".bt-del").click(onDel);
 }
 
 function onRemoved(data) {
-	console.log(data);
+	$("#"+data.key).remove();
 }
 
 function onChanged(data) {
@@ -85,3 +93,4 @@ auth.onAuthStateChanged(onAuthChg);
 $(".bt-login").click(onLogin);
 $(".bt-logout").click(onLogout);
 $(".bt-save").click(onSave);
+$(".bt-del").click(onDel);

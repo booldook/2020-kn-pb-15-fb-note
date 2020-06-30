@@ -7,6 +7,7 @@
 .body-wrapper > .list-wrapper {flex: 30% 0 0; height: 100%; border-right: 3px solid #ccc; background-color: #f4f0f0;}
 .body-wrapper > .cont-wrapper {flex: 70% 0 0; height: 100%;}
 .body-wrapper > .cont-wrapper > textarea {height: calc(100% - 60px); font-size: 1.5rem;}
+.card > .bt-del {top: 10px; right: 10px; color: #6b6b6b; cursor: pointer;}
 /**************** header *****************/
 
 
