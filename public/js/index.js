@@ -32,11 +32,19 @@ function onSave() {
 	}
 }
 
-function onDel() {
+function onDel(e) {
+	e.stopPropagation();
 	var id = $(this).parent().attr("id");
 	if(confirm("정말로 삭제하시겠습니까?")) {
 		db.ref("root/notes/" + user.uid + "/" + id).remove();
 	}
+}
+
+function onChg() {
+	db.ref("root/notes/" + user.uid + "/" + $(this).attr("id")).once("value").then(function(data){
+		console.log(data.val());
+		$("#content").val(data.val().content);
+	});
 }
 
 function onAdded(data) {
@@ -51,7 +59,7 @@ function onAdded(data) {
 	html += '</div>';
 	html += '</div>';
 	html += '</div>';
-	$(html).prependTo(".list-wrapper").find(".bt-del").click(onDel);
+	$(html).prependTo(".list-wrapper").click(onChg).find(".bt-del").click(onDel);
 }
 
 function onRemoved(data) {
