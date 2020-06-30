@@ -28,11 +28,22 @@ function onSave() {
 			createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
 			icon: content.substr(0, 1)
 		}).key;
+		$("#content").val('');
 	}
 }
 
 function onAdded(data) {
-	console.log(data);
+	var html = '';
+	html += '<div class="card">';
+	html += '<div class="card-body d-flex align-items-center">';
+	html += '<h2 class="rounded-circle w70 h70 bg-primary text-light d-flex justify-content-center align-items-center font-weight-bold">'+data.val().icon+'</h2>';
+	html += '<div class="w-auto ml-3">';
+	html += '<h3>'+data.val().content.substr(0, 10)+'...</h3>';
+	html += '<p>'+data.val().createdAt+'</p>';
+	html += '</div>';
+	html += '</div>';
+	html += '</div>';
+	$(".list-wrapper").prepend(html);
 }
 
 function onRemoved(data) {
