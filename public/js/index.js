@@ -4,6 +4,7 @@ var googleAuth = new firebase.auth.GoogleAuthProvider();
 var db = firebase.database();
 var user = null;
 var ref = null;
+var key = null;
 
 
 /**************** 사용자 지정 *****************/
@@ -23,12 +24,22 @@ function onSave() {
 		$("#content").focus();
 	}
 	else {
-		ref.push({
-			content: content,
-			createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
-			icon: content.substr(0, 1)
-		}).key;
+		if(key) {
+			db.ref('root/notes/' + user.uid + '/' + key).update({
+				content: content,
+				updatedAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+				icon: content.substr(0, 1)
+			});
+		}
+		else {
+			ref.push({
+				content: content,
+				createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+				icon: content.substr(0, 1)
+			}).key;
+		}
 		$("#content").val('');
+		key = null;
 	}
 }
 
@@ -42,7 +53,7 @@ function onDel(e) {
 
 function onChg() {
 	db.ref("root/notes/" + user.uid + "/" + $(this).attr("id")).once("value").then(function(data){
-		console.log(data.val());
+		key = data.key;
 		$("#content").val(data.val().content);
 	});
 }
@@ -67,7 +78,9 @@ function onRemoved(data) {
 }
 
 function onChanged(data) {
-	console.log(data);
+	$("#"+data.key).find("h2").html(data.val().icon);
+	$("#"+data.key).find("h3").html(data.val().content.substr(0, 10) + "...");
+	$("#"+data.key).find("p").html(data.val().updatedAt);
 }
 
 
@@ -85,6 +98,8 @@ function onAuthChg(data) {
 		$(".logout-wrap").addClass("d-flex").removeClass("d-none");
 		$(".header .icon").attr("src", data.photoURL);
 		$(".header .email").html(data.email);
+		$("#content").val('').attr("disabled", false);
+		$(".bts > button").attr("disabled", false);
 		init();
 	}
 	else {
@@ -92,7 +107,20 @@ function onAuthChg(data) {
 		$(".header .icon").attr("src", "https://via.placeholder.com/50x50");
 		$(".header .email").html("");
 		$(".logout-wrap").addClass("d-none").removeClass("d-flex");
+		$(".list-wrapper").empty();
+		$("#content").val('').attr("disabled", true);
+		$(".bts > button").attr("disabled", true);
+		key = null;
 	}
+}
+
+function onReset() {
+	$("#content").val('');
+}
+
+function onNew() {
+	$("#content").val('');
+	key = null;
 }
 
 /**************** 이벤트 등록 *****************/
@@ -102,3 +130,5 @@ $(".bt-login").click(onLogin);
 $(".bt-logout").click(onLogout);
 $(".bt-save").click(onSave);
 $(".bt-del").click(onDel);
+$(".bt-reset").click(onReset);
+$(".bt-new").click(onNew);
