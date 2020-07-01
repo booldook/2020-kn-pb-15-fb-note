@@ -11,3 +11,5 @@
 .chat .writer {margin-top: 12px;}
 .chat.me .cont {margin-left: auto;}
 .chat.me .cont::after {left: auto; right: 13px; background-color: #28a745;}
+
+.bt-login, .bt-logout {display: none;}
