@@ -6,12 +6,14 @@
 #chat-txt {border: 5px solid #999; border-radius: 10px; outline: none; font-size: 1.25rem;}
 #chat-txt:focus {outline: none; box-shadow: none;}
 
-.chat .cont {border-radius: 12px; max-width: 60%; position: relative; background-color: #343a40;}
+.chat.me {text-align: right;}
+.chat .cont {border-radius: 12px; max-width: 60%; position: relative; background-color: #343a40; display: inline-block; text-align: left;}
 .chat .cont::after {display: block; width: 20px; height: 20px; background-color: #343a40; content: ""; position: absolute; bottom: -10px; left: 13px; transform: rotate(45deg);} 
-.chat .writer {text-align: left;}
+
 .chat .writer {margin-top: 12px;}
-.chat.me .cont {margin-left: auto; background-color: #28a745;}
-.chat.me .cont::after {left: auto; right: 13px; background-color: #28a745;}
 .chat.me .writer {text-align: right;}
+
+.chat.me .cont {background-color: #28a745;}
+.chat.me .cont::after {left: auto; right: 13px; background-color: #28a745;}
 
 .bt-login, .bt-logout {display: none;}
