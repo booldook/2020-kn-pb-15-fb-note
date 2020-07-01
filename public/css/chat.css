@@ -1,0 +1,9 @@
+.logo {font-size: 1.5rem;}
+
+.chat-wrapper {height: calc(100vh - 80px);}
+.chat-stage {height: calc(100% - 140px); border: 5px solid #999; border-radius: 10px; background-color: azure; overflow-y: scroll;}
+.chat-wr {margin: 10px 0;}
+#chat-txt {border: 5px solid #999; border-radius: 10px; outline: none; font-size: 1.25rem;}
+#chat-txt:focus {outline: none; box-shadow: none;}
+
+.chat .cont {border-radius: 12px; max-width: 60%;}

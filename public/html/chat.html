@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../css/all.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/chat.css">
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
+	<script src="../js/moment.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="header d-flex align-items-center justify-content-between h80 px-3 bg-dark text-light">
+			<h1 class="logo">
+				<span class="fa fa-comment"></span> 누구나 채팅~
+			</h1>
+			<button class="bt-login btn btn-primary">
+				<i class="fab fa-google"></i> 로그인
+			</button>
+			<button class="bt-logout btn btn-danger">
+				<i class="fa fa-sign-out-alt"></i> 로그아웃
+			</button>
+		</div>
+		<div class="chat-wrapper border-left border-right p-3">
+			<div class="chat-stage">
+				<div class="chat p-2">
+					<div class="cont bg-dark text-light p-3">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius distinctio omnis ipsa! Numquam non maxime inventore minima ipsam soluta illum placeat iusto delectus quibusdam, ex magni alias, assumenda mollitia animi.
+					</div>
+					<div class="writer">booldook@gmail.com</div>
+				</div>
+				<div class="chat p-2">
+					<div class="cont bg-success text-light p-3 ml-auto">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius distinctio omnis ipsa! Numquam non maxime inventore minima ipsam soluta illum placeat iusto delectus quibusdam, ex magni alias, assumenda mollitia animi.
+					</div>
+					<div class="writer text-right">booldook@gmail.com</div>
+				</div>
+			</div>
+			<div class="chat-wr d-flex justify-content-between h120">
+				<textarea name="chat-txt" id="chat-txt" class="form-control"></textarea>
+				<button class="bt-save btn btn-success ml-2 w100">전송</button>
+			</div>
+		</div>
+	</div>
+	<script src="/__/firebase/7.15.5/firebase-app.js"></script>
+	<script src="/__/firebase/7.15.5/firebase-auth.js"></script>
+	<script src="/__/firebase/7.15.5/firebase-database.js"></script>
+	<script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+	<script src="/__/firebase/init.js"></script>
+	<script src="../js/chat.js"></script>
+</body>
+</html>
