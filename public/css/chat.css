@@ -6,4 +6,8 @@
 #chat-txt {border: 5px solid #999; border-radius: 10px; outline: none; font-size: 1.25rem;}
 #chat-txt:focus {outline: none; box-shadow: none;}
 
-.chat .cont {border-radius: 12px; max-width: 60%;}
+.chat .cont {border-radius: 12px; max-width: 60%; position: relative;}
+.chat .cont::after {display: block; width: 20px; height: 20px; background-color: #343a40; content: ""; position: absolute; bottom: -10px; left: 13px; transform: rotate(45deg);} 
+.chat .writer {margin-top: 12px;}
+.chat.me .cont {margin-left: auto;}
+.chat.me .cont::after {left: auto; right: 13px; background-color: #28a745;}
