@@ -123,6 +123,15 @@ function onNew() {
 	key = null;
 }
 
+function onListToggle() {
+	if($(".list-wrapper").position().left < 0) {
+		$(".list-wrapper").css("left", 0);
+	}
+	else {
+		$(".list-wrapper").css("left", "-100%");
+	}
+}
+
 /**************** 이벤트 등록 *****************/
 auth.onAuthStateChanged(onAuthChg);
 
@@ -132,3 +141,4 @@ $(".bt-save").click(onSave);
 $(".bt-del").click(onDel);
 $(".bt-reset").click(onReset);
 $(".bt-new").click(onNew);
+$(".bt-bars").click(onListToggle);
