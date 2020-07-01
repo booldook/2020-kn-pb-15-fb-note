@@ -21,6 +21,7 @@ function onAdded(r) {
 	html += '<div class="writer">'+r.val().writer+'</div>';
 	html += '</div>';
 	$(".chat-stage").append(html);
+	$(".chat-stage").scrollTop($(".chat-stage")[0].scrollHeight);
 }
 
 function onAuth(r) {
@@ -57,6 +58,7 @@ function onSave() {
 			createdAt: moment().format('YYYY-MM-DD HH:mm:ss')
 		}).key;
 	}
+	$("#chat-txt").val('');
 }
 
 /**************** 이벤트선언 *****************/
